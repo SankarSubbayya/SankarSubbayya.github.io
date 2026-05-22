@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sankar Subbayya — AI engineer, open-source decision-support</title>
+  <meta name="description" content="Sankar Subbayya builds open-source AI for healthcare access, enterprise governance, and clinical decision-support. Projects ship with their evals, their safety nets, and their source." />
+
+  <meta property="og:title" content="Sankar Subbayya" />
+  <meta property="og:description" content="AI engineer. Open-source decision-support for healthcare, governance, and frontline operations." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://sankarsubbayya.github.io/" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAFAFB;
+      --surface: #ffffff;
+      --text: #18181B;
+      --text-muted: #71717A;
+      --border: #E5E7EB;
+      --border-strong: #D4D4D8;
+      --accent: #B91C1C;
+      --accent-hover: #991B1B;
+      --accent-soft: #FECACA;
+      --accent-bg: #FEF2F2;
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-feature-settings: "ss01", "cv11";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.12);
+    }
+
+    h1 {
+      font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+      font-size: 56px;
+      line-height: 1.0;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin: 0 0 14px;
+      font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 1;
+    }
+    h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .lede {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 0 28px;
+    }
+
+    section { margin-top: 56px; }
+    h2 {
+      font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    p { margin: 0 0 14px; }
+
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .project:hover {
+      border-color: var(--accent);
+      box-shadow: 0 1px 3px rgba(185, 28, 28, 0.06);
+    }
+    .project-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .project-name {
+      font-family: "Fraunces", serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -0.005em;
+    }
+    .project-tag {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .project-desc {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 0 0 10px;
+    }
+    .project-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-bg);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .pill:hover { background: var(--accent-soft); text-decoration: none; }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+    }
+    .contact a {
+      color: var(--text);
+    }
+    .contact a:hover { color: var(--accent); }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12.5px;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 42px; }
+      .lede { font-size: 17px; }
+      .wrap { padding: 36px 20px 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">Sankar Subbayya</div>
+      <h1>AI for the moments<br>that <em>actually matter.</em></h1>
+      <p class="lede">
+        I build open-source AI for healthcare access, enterprise governance,
+        and clinical decision-support. Each project ships with its
+        adversarially-authored eval, its deterministic safety net, and its
+        full source — because the claim doesn't count if you can't reproduce
+        it.
+      </p>
+      <p class="lede">
+        Full project portfolio at <a href="https://accurateai.org">accurateai.org</a>.
+      </p>
+    </header>
+
+    <section>
+      <h2>Selected work</h2>
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">Path to Care</div>
+          <div class="project-tag">AMD Developer Hackathon · 2026</div>
+        </div>
+        <p class="project-desc">
+          Multimodal triage decision-support for rural healthcare in the Global South.
+          Phone photo + typed narrative → top-3 conditions, Red/Yellow/Green urgency,
+          structured pre-visit SOAP, and patient framing in the patient's own ₹ and km.
+          Built in 24 hours on a single AMD Instinct MI300X. Never diagnoses.
+        </p>
+        <div class="project-links">
+          <a class="pill" href="https://pathtocare.pages.dev">Live</a>
+          <a class="pill" href="https://github.com/SankarSubbayya/path_to_care">Source</a>
+          <a class="pill" href="https://huggingface.co/spaces/sankara68/path-to-care">HF Space</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">Sentinel Health</div>
+          <div class="project-tag">Gemma 4 Good Hackathon · 2026</div>
+        </div>
+        <p class="project-desc">
+          Offline triage for community health workers in low-resource settings.
+          Multimodal Gemma 4 + deterministic safety layer + WhatsApp handoff to
+          the hub physician — runs entirely on a clinic laptop, no internet.
+          Scoped to five grassroots emergencies: trauma, poisoning, snake bite,
+          MI, stroke.
+        </p>
+        <div class="project-links">
+          <a class="pill" href="https://sentinel-health.pages.dev">Live</a>
+          <a class="pill" href="https://github.com/SankarSubbayya/sentinel-health">Source</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">Agent Sentinel</div>
+          <div class="project-tag">AI &amp; Big Data Expo · San Jose · 2026</div>
+        </div>
+        <p class="project-desc">
+          Governance plane for enterprise AI agents. Gates every tool call,
+          signs the audit trail with hash-chained HMAC, meters per-BU spend.
+          Built on Gemini 2.5 Flash + Pro with Cached Content over full policy
+          documents. The control plane between agentic pilots and production.
+        </p>
+        <div class="project-links">
+          <a class="pill" href="https://github.com/SankarSubbayya/agent_sentinel">Source</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How I work</h2>
+      <p>
+        Three projects, one posture: AI that names its own limits. Path to
+        Care never produces a diagnosis. Sentinel Health never overrides a
+        red flag. Agent Sentinel never lets a model bypass its policy gate.
+        The deterministic safety layer is code, not a disclaimer.
+      </p>
+      <p>
+        Every system ships an adversarial test set, a measurable safety
+        property (zero false-negatives on Red triage; zero unauthorized
+        tool calls), and a single-command demo. The eval lives in the repo
+        next to the code that produces the claim.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact">
+        <a href="https://github.com/SankarSubbayya">github / SankarSubbayya</a>
+        <a href="https://huggingface.co/sankara68">🤗 / sankara68</a>
+        <a href="https://accurateai.org">accurateai.org</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 · Apache-2.0 across all repos · built in plain sight
+    </footer>
+  </div>
+</body>
+</html>
