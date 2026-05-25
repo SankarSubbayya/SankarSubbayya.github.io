@@ -146,13 +146,28 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px 22px;
+      overflow: hidden;
       margin-bottom: 14px;
       transition: border-color 0.15s, box-shadow 0.15s;
     }
     .project:hover {
       border-color: var(--accent);
       box-shadow: 0 1px 3px rgba(185, 28, 28, 0.06);
+    }
+    .project-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1200 / 630;
+      object-fit: cover;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.4s ease;
+    }
+    .project:hover .project-image {
+      transform: scale(1.015);
+    }
+    .project-body {
+      padding: 18px 22px 20px;
     }
     .project-header {
       display: flex;
@@ -268,76 +283,104 @@
       <h2>Selected work</h2>
 
       <div class="project">
-        <div class="project-header">
-          <div class="project-name">Delphi</div>
-          <div class="project-tag">Google I/O Hackathon · 2026</div>
-        </div>
-        <p class="project-desc">
-          Synthetic populations as a computational substrate. Dozens of Gemini
-          3.5 Flash sub-agents, each role-playing a different American persona
-          generated from US Census demographics and grounded in live web,
-          reason about any question in parallel. ~60 seconds to a probabilistic
-          forecast, reasons for and against, demographic split, and an outlier
-          quote — synthesized into a WSJ-style summary by a final Gemini call.
-          Live-demoed with a sixty-percentage-point swing on one news shock.
-        </p>
-        <div class="project-links">
-          <a class="pill" href="https://youtu.be/-jWNgutTlzM">Demo video</a>
-          <a class="pill" href="https://github.com/SankarSubbayya/delphi">Source</a>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <div class="project-name">Path to Care</div>
-          <div class="project-tag">AMD Developer Hackathon · 2026</div>
-        </div>
-        <p class="project-desc">
-          Multimodal triage decision-support for rural healthcare in the Global South.
-          Phone photo + typed narrative → top-3 conditions, Red/Yellow/Green urgency,
-          structured pre-visit SOAP, and patient framing in the patient's own ₹ and km.
-          Built in 24 hours on a single AMD Instinct MI300X. Never diagnoses.
-        </p>
-        <div class="project-links">
-          <a class="pill" href="https://pathtocare.pages.dev">Live</a>
-          <a class="pill" href="https://github.com/SankarSubbayya/path_to_care">Source</a>
-          <a class="pill" href="https://huggingface.co/spaces/sankara68/path-to-care">HF Space</a>
+        <a href="https://youtu.be/-jWNgutTlzM" aria-label="Open Delphi demo video">
+          <img class="project-image" src="projects/delphi.png"
+               alt="Delphi headline slide — 13.3% to 79.5%, +66.2 pp shift after a single news shock."
+               loading="lazy" />
+        </a>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">Delphi</div>
+            <div class="project-tag">Google I/O Hackathon · 2026</div>
+          </div>
+          <p class="project-desc">
+            Synthetic populations as a computational substrate. Dozens of Gemini
+            3.5 Flash sub-agents, each role-playing a different American persona
+            generated from US Census demographics and grounded in live web,
+            reason about any question in parallel. ~60 seconds to a probabilistic
+            forecast, reasons for and against, demographic split, and an outlier
+            quote — synthesized into a WSJ-style summary by a final Gemini call.
+            Live-demoed with a sixty-percentage-point swing on one news shock.
+          </p>
+          <div class="project-links">
+            <a class="pill" href="https://youtu.be/-jWNgutTlzM">Demo video</a>
+            <a class="pill" href="https://github.com/SankarSubbayya/delphi">Source</a>
+          </div>
         </div>
       </div>
 
       <div class="project">
-        <div class="project-header">
-          <div class="project-name">Sentinel Health</div>
-          <div class="project-tag">Gemma 4 Good Hackathon · 2026</div>
-        </div>
-        <p class="project-desc">
-          Offline triage for community health workers in low-resource settings.
-          Multimodal Gemma 4 + deterministic safety layer + WhatsApp handoff to
-          the hub physician — runs entirely on a clinic laptop, no internet.
-          Scoped to five grassroots emergencies: trauma, poisoning, snake bite,
-          MI, stroke.
-        </p>
-        <div class="project-links">
-          <a class="pill" href="https://sentinel-health.pages.dev">Live</a>
-          <a class="pill" href="https://github.com/SankarSubbayya/sentinel-health">Source</a>
+        <a href="https://pathtocare.pages.dev" aria-label="Open Path to Care">
+          <img class="project-image" src="projects/path_to_care.png"
+               alt="Path to Care · AMD Developer Hackathon project poster."
+               loading="lazy" />
+        </a>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">Path to Care</div>
+            <div class="project-tag">AMD Developer Hackathon · 2026</div>
+          </div>
+          <p class="project-desc">
+            Multimodal triage decision-support for rural healthcare in the Global South.
+            Phone photo + typed narrative → top-3 conditions, Red/Yellow/Green urgency,
+            structured pre-visit SOAP, and patient framing in the patient's own ₹ and km.
+            Built in 24 hours on a single AMD Instinct MI300X. Never diagnoses.
+          </p>
+          <div class="project-links">
+            <a class="pill" href="https://pathtocare.pages.dev">Live</a>
+            <a class="pill" href="https://github.com/SankarSubbayya/path_to_care">Source</a>
+            <a class="pill" href="https://huggingface.co/spaces/sankara68/path-to-care">HF Space</a>
+          </div>
         </div>
       </div>
 
       <div class="project">
-        <div class="project-header">
-          <div class="project-name">Agent Sentinel</div>
-          <div class="project-tag">AI &amp; Big Data Expo · San Jose · 2026</div>
+        <a href="https://sentinel-health.pages.dev" aria-label="Open Sentinel Health">
+          <img class="project-image" src="projects/sentinel_health.png"
+               alt="Sentinel Health · Gemma 4 Good Hackathon project poster."
+               loading="lazy" />
+        </a>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">Sentinel Health</div>
+            <div class="project-tag">Gemma 4 Good Hackathon · 2026</div>
+          </div>
+          <p class="project-desc">
+            Offline triage for community health workers in low-resource settings.
+            Multimodal Gemma 4 + deterministic safety layer + WhatsApp handoff to
+            the hub physician — runs entirely on a clinic laptop, no internet.
+            Scoped to five grassroots emergencies: trauma, poisoning, snake bite,
+            MI, stroke.
+          </p>
+          <div class="project-links">
+            <a class="pill" href="https://sentinel-health.pages.dev">Live</a>
+            <a class="pill" href="https://github.com/SankarSubbayya/sentinel-health">Source</a>
+          </div>
         </div>
-        <p class="project-desc">
-          Governance plane for enterprise AI agents. Gates every tool call,
-          signs the audit trail with hash-chained HMAC, meters per-BU spend.
-          Built on Gemini 2.5 Flash + Pro with Cached Content over full policy
-          documents. The control plane between agentic pilots and production.
-        </p>
-        <div class="project-links">
-          <a class="pill" href="https://agent-sentinel.pages.dev">Live</a>
-          <a class="pill" href="https://agent-sentinel-weld.vercel.app">Dashboard</a>
-          <a class="pill" href="https://github.com/SankarSubbayya/agent_sentinel">Source</a>
+      </div>
+
+      <div class="project">
+        <a href="https://agent-sentinel.pages.dev" aria-label="Open Agent Sentinel">
+          <img class="project-image" src="projects/agent_sentinel.png"
+               alt="Agent Sentinel · AI &amp; Big Data Expo project poster."
+               loading="lazy" />
+        </a>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">Agent Sentinel</div>
+            <div class="project-tag">AI &amp; Big Data Expo · San Jose · 2026</div>
+          </div>
+          <p class="project-desc">
+            Governance plane for enterprise AI agents. Gates every tool call,
+            signs the audit trail with hash-chained HMAC, meters per-BU spend.
+            Built on Gemini 2.5 Flash + Pro with Cached Content over full policy
+            documents. The control plane between agentic pilots and production.
+          </p>
+          <div class="project-links">
+            <a class="pill" href="https://agent-sentinel.pages.dev">Live</a>
+            <a class="pill" href="https://agent-sentinel-weld.vercel.app">Dashboard</a>
+            <a class="pill" href="https://github.com/SankarSubbayya/agent_sentinel">Source</a>
+          </div>
         </div>
       </div>
     </section>
