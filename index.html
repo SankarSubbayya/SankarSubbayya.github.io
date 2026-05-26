@@ -213,6 +213,82 @@
     }
     .pill:hover { background: var(--accent-soft); text-decoration: none; }
 
+    .finetune {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+    .finetune h4 {
+      font-family: "Fraunces", serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 6px;
+      letter-spacing: -0.005em;
+    }
+    .finetune p {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 0 0 12px;
+    }
+    .finetune-figure {
+      margin: 12px 0 14px;
+      padding: 0;
+    }
+    .finetune-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .finetune-figure figcaption {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .finetune-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .finetune-table th, .finetune-table td {
+      padding: 7px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .finetune-table th {
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .finetune-table tr:last-child td { border-bottom: 0; }
+    .finetune-table code {
+      font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+      font-size: 12px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .finetune-note {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 10px !important;
+      line-height: 1.5;
+    }
+
     .contact {
       display: flex;
       flex-wrap: wrap;
@@ -331,6 +407,72 @@
             <a class="pill" href="https://pathtocare.pages.dev">Live</a>
             <a class="pill" href="https://github.com/SankarSubbayya/path_to_care">Source</a>
             <a class="pill" href="https://huggingface.co/spaces/sankara68/path-to-care">HF Space</a>
+          </div>
+          <div class="finetune">
+            <h4>Fine-tuning on MI300X</h4>
+            <p>
+              The triage head is a LoRA SFT pass over Gemma 4 31B-it,
+              run end to end on a single AMD Instinct MI300X. Two epochs,
+              twenty-one training examples, finished in 32 seconds.
+            </p>
+            <figure class="finetune-figure">
+              <img src="figures/lora_loss_curve.png"
+                   alt="LoRA SFT loss curve — Path to Care, Gemma 4 31B-it on AMD MI300X. Cross-entropy loss falls from 3.90 at step 1 to 0.58 at step 10 across two epochs, in 32 seconds wall-clock."
+                   loading="lazy" />
+              <figcaption>
+                Loss 3.90 → 0.58 over 10 optimizer steps · 2 epochs · effective batch size 4.
+              </figcaption>
+            </figure>
+            <table class="finetune-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Base model</td>
+                  <td><code>google/gemma-4-31B-it</code> (multimodal, dense)</td>
+                </tr>
+                <tr>
+                  <td>Adapter</td>
+                  <td>LoRA · <code>r=16</code>, <code>alpha=32</code>, <code>dropout=0.05</code>, <code>bias=none</code></td>
+                </tr>
+                <tr>
+                  <td>Target modules</td>
+                  <td>language-model self-attention (<code>q_proj</code>, <code>k_proj</code>, <code>v_proj</code>, <code>o_proj</code>)</td>
+                </tr>
+                <tr>
+                  <td>Trainable parameters</td>
+                  <td>45.0 M of 31.3 B (0.14%)</td>
+                </tr>
+                <tr>
+                  <td>Training rows</td>
+                  <td>21 (image + SOAP + village context → urgency + reasoning)</td>
+                </tr>
+                <tr>
+                  <td>Epochs · effective batch size</td>
+                  <td>2 · 4</td>
+                </tr>
+                <tr>
+                  <td>Wall-clock time</td>
+                  <td>32 seconds</td>
+                </tr>
+                <tr>
+                  <td>Training loss</td>
+                  <td>3.90 → 0.58</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="finetune-note">
+              Adapter weights at
+              <a href="https://huggingface.co/sankara68/path-to-care-triage-gemma4-lora">sankara68/path-to-care-triage-gemma4-lora</a>;
+              served by vLLM with <code>--enable-lora</code>. The eval delta is the
+              <strong>+7 pp top-1 accuracy lift</strong> (28% → 35%) on the SCIN top-16
+              100-case holdout — full table on
+              <a href="https://pathtocare.pages.dev/#results">pathtocare.pages.dev</a>.
+            </p>
           </div>
         </div>
       </div>
